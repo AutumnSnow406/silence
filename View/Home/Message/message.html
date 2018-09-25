@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>电子信息工程专业改革试点</title>
+<link rel="stylesheet" type="text/css" href="Public/Home/css/header.css">
+<link rel="stylesheet" type="text/css" href="Public/Home/css/common.css">
+<link rel="stylesheet" type="text/css" href="Public/Home/css/footer.css">
+<link rel="stylesheet" type="text/css" href="Public/Home/css/message.css">
+<link rel="stylesheet" type="text/css" href="Public/Home/css/login.css">
+<script type="text/javascript" src="Public/Home/js/jquery.js"></script>
+<script type="text/javascript" src="Public/Home/js/login.js"></script>
+
+<script>
+function checknum(v, word) {
+	var len = 200 - v.length;
+	$('#messword_' + word).text(len);
+	if (len < 0) {
+	    $('#messword_' + word).css({
+	        "color": "red"
+	    });
+	};
+};
+
+function replysub(pid,tid) {
+	var username = "<?php echo isset($_SESSION['t_user']) ? $_SESSION['t_user'] : ""; ?>";
+	if(username == ''){
+		alert('登录后才能进行回复！');
+	}else{
+	    var content = $('#reply_' + pid).children('textarea').val();
+	    var len = content.length;
+	    if (len == 0) {
+	        alert("回复内容不能为空！");
+	        return false;
+	    }
+	    if (len > 200) {
+	        alert("回复内容不能超过200字！");
+	        return false;
+	    }
+	    $.post("index.php?Home/Teacher/reply", {
+	        pid: pid,
+	        tid: tid,
+	        content: content
+	    }, function(data) {
+	    	if (data == 1) {
+	            alert('回复成功!感谢您的回复！');
+	            //$('#messbox_0').val('');
+	            window.location.reload();
+	        }
+	        var dl = "<dl><dd><div><img src='Public/Home/images/教师.png'></div><div class='usermsgFont2'><p><span>" + data.m_name + "</span><br> " + content + "</p><h4>"+data.m_time+"</div></dd></dl>";
+	        $('#reply_' + pid).after(dl);
+	        $('.reply').empty();
+	    })
+	};
+};
+
+function reply(id,tid) {
+	var box = "<textarea id='messbox_" + tid + "onkeyup=checknum(this.value," + tid + ")></textarea><a id='comment' class='btn68 fl' onclick='replysub(" + id + tid + ")'>回复</a><span>还可以输入<span id='messword_" + tid + "'>200</span>字</span></div><div class='cl'></div></div>";
+	$('.reply').empty();
+	$('#reply_' + tid).html(box);
+	$('#reply_' + tid).children('textarea').focus();
+}
+
+</script>
+</head>
+<body>
+	<div class="header">
+		<!-- logo开始 -->
+		<div class="logo">
+			<img src="Public/Home/images/logo.png">
+		</div>
+		<!-- logo结束 -->
+
+		<!-- 导航栏开始 -->
+		<div class="nav">
+			<div class="nav1">
+				<ul>
+					<li><a href="index.php">首页</a></li>
+					<li><a href="index.php?Home/Taskbook/taskbook">任务书</a></li>
+					<li><a href="#">专业概况</a>
+						<ul>
+							<li><a href="index.php?Home/Profess/condition">发展状况</a></li>
+							<li><a href="index.php?Home/Profess/feature">专业特色</a></li>
+							<li><a href="index.php?Home/Profess/planning">专业规划</a></li>
+						</ul></li>
+					<li><a href="#">人才培养</a>
+						<ul>
+							<li><a href="index.php?Home/Talent/introduction">招生简介</a></li>
+							<li><a href="index.php?Home/Talent/program">培养方案</a></li>
+							<li><a href="index.php?Home/Talent/lab">专业实验室</a></li>
+						</ul></li>
+					<li><a href="#">师资队伍</a>
+						<ul>
+							<li><a href="index.php?Home/Teacher/teacher/id/1">教学团队</a></li>
+							<li><a href="index.php?Home/Teacher/structure">师资结构</a></li>
+						</ul></li>
+					<li><a href="#">教学科研</a>
+						<ul>
+							<li><a href="index.php?Home/Scientific/project">教研项目</a></li>
+							<li><a href="index.php?Home/Scientific/achievement">教研成果</a></li>
+							<li><a href="index.php?Home/Scientific/program">科研项目</a></li>
+							<li><a href="index.php?Home/Scientific/result">科研成果</a></li>
+						</ul></li>
+					<li><a href="#">学子风采</a>
+						<ul>
+							<li><a href="index.php?Home/Student/style">学生园地</a></li>
+							<li><a href="index.php?Home/Student/show">成果展示</a></li>
+							<li><a href="index.php?Home/Student/employment">就业情况</a></li>
+						</ul></li>
+					<li><a href="#">校企合作</a>
+						<ul>
+							<li><a href="index.php?Home/Cooperation/base">实习基地</a></li>
+							<li><a href="index.php?Home/Cooperation/agreement">合作协议</a></li>
+						</ul></li>
+					<li><a href="index.php?Home/Contact/contact">联系我们</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 导航栏结束 -->
+	</div>
+	<div class="main">
+		<div class="pos">
+			<span>&nbsp;&nbsp;当前位置：<a href="index.php">首页</a>>>师资队伍>><a href="index.php?Home/Teacher/teacher/id/1">教学团队</a>>>留言列表
+			</span>
+		</div>
+		<div class="con">
+			<div class="con1">
+				{foreach name='teach' from=$data item='row'}
+				<ul>
+					<li><img src="Public/Home/images/箭头.png">&nbsp;<a
+						href="index.php?Home/Teacher/teacher/id/{$row1.t_id}">{$row.t_name}老师简介</a></li>
+				</ul>
+				{/foreach}
+			</div>
+			<div class="con2">
+				<div class="mess">
+				<h2>所有的留言</h2>	<span class="login-header"><a href="javascript:void(0);">登录</a>?(仅限老师登录！)</span>
+				</div>
+				<div class="mess1">
+						{foreach name='mess' from=$result item='list'}
+					<ul class="mess-list">
+						<li>
+							<div class="mess-text">
+								<div class="mess-pic">
+									<img alt="" src="Public/Home/images/学生.png" />
+								</div>
+								<div>
+									<h3>
+										<span id="name_{$list.m_id}">{$list.m_name}</span>:
+									</h3>
+									<p>{$list.m_content}</p>
+									<h4>
+										<span> <a onclick="reply({$list.m_id},{$row1.t_id})">回复</a>
+										</span> {$list.m_time|date_format:'%Y-%m-%d %H:%M:%S'}
+									</h4>
+									<div id="reply_{$list.m_id}" class="reply"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+						{/foreach}
+				</div>
+				<!-- 登录部分 -->
+				<div class="login">
+					<div class="login-title">
+						教师登录<span><a href="javascript:void(0);" class="close-login">关闭</a></span>
+					</div>
+					<div class="login-input-content">
+						<div class="login-input">
+							<label>用&nbsp;户&nbsp;&nbsp;名：</label> <input type="text"
+								placeholder="请输入用户名" name="info[username]" id="username"
+								class="list-input" />
+						</div>
+						<div class="login-input">
+							<label>登录密码：</label> <input type="password" placeholder="请输入登录密码"
+								name="info[password]" id="password" class="list-input" />
+						</div>
+					</div>
+					<div class="login-button">
+						<a href="javascript:void(0);" id="login-button-submit">登录</a>
+					</div>
+				</div>
+				<div class="login-bg"></div>
+			</div>
+		</div>
+		<div class="footer">
+			<p id="msg1">
+				<span>版权所有&nbsp;&nbsp;@&nbsp;&nbsp;计算机与电子信息学院&nbsp;&nbsp;|&nbsp;&nbsp;电子信息工程专业</span>
+			</p>
+			<p id="friend">
+				<span>友情链接：</span> <a target="_blank" href="#">电子科学与技术</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a target="_blank" href="#">计算机科学与技术</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+					target="_blank" href="#">测控技术与仪器</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+					target="_blank" href="#">电气工程及其自动化</a>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+				<a target="_blank" href="#">电气工程及其自动化（卓越班）</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a target="_blank" href="#">自动化</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+					target="_blank" href="#">网络工程</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+					target="_blank" href="index.php?Admin/Index/index"
+					style="color: #ff0000;">后台入口</a>
+			</p>
+			<p id="msg2">
+				<span>技术支持：严浚海&nbsp;&nbsp;&nbsp;&nbsp;指导老师：左敬龙</span>
+			</p>
+		</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+var msgdsq;
+// 错误时：提示调用方法
+function show_err_msg(msg) {
+	$('.msg_bg').html('');
+	clearTimeout(msgdsq);
+	//增加CSS和HTML样式
+	$('body').append('<div class="sub_err" style="position:absolute;top:60px;left:0;width:500px;z-index:999999;"></div>');
+	var errhtml = '<div  class="bac" style="padding:8px 0px;border:1px solid #ff0000;width:100%;margin:0 auto;background-color:#fff;color:#B90802;border:3px #ff0000 solid;text-align:center;font-size:16px;font-family:微软雅黑;"><img style="margin-right:10px;" src="Public/Admin/images/error.png">';
+	var errhtmlfoot = '</div>';
+	//获取高度
+	$('.msg_bg').height($(document).height());
+	//组织样式
+	$('.sub_err').html(errhtml + msg + errhtmlfoot);
+	//获取并设定左外边框距离
+	var left = ($(document).width() - 500) / 2;
+	$('.sub_err').css({
+		'left' : left + 'px'
+	});
+	var scroll_height = $(document).scrollTop();
+	$('.sub_err').animate({
+		'top' : scroll_height + 120
+	}, 300);
+	msgdsq = setTimeout(function() {
+		$('.sub_err').animate({
+			'top' : scroll_height + 80
+		}, 300);
+		setTimeout(function() {
+			$('.msg_bg').remove();
+			$('.sub_err').remove();
+		}, 300);
+	}, "1200");
+}
+
+// 正确时：提示调用方法
+function show_msg(msg, url) {
+	$('.msg_bg').html('');
+	clearTimeout(msgdsq);
+	$('body').append('<div class="sub_err" style="position:absolute;top:60px;left:0;width:500px;z-index:999999;"></div>');
+	var htmltop = '<div class="bac" style="padding:8px 0px;border:1px solid #090;width:100%;margin:0 auto;background-color:#FFF2F8;color:#090;border:3px #090 solid;text-align:center;font-size:16px;"><img style="margin-right:10px;" src="Public/Admin/images/loading.gif">';
+	var htmlfoot = '</div>';
+	$('.msg_bg').height($(document).height());
+	var left = ($(document).width() - 500) / 2;
+	$('.sub_err').css({
+		'left' : left + 'px'
+	});
+	$('.sub_err').html(htmltop + msg + htmlfoot);
+	var scroll_height = $(document).scrollTop();
+	$('.sub_err').animate({
+		'top' : scroll_height + 120
+	}, 500);
+	msgdsq = setTimeout(function() {
+		$('.sub_err').animate({
+			'top' : scroll_height + 80
+		}, 500);
+		setTimeout(function() {
+			$('.msg_bg').remove();
+			$('.sub_err').remove();
+			if (url != '') {
+				location.href = url;
+			}
+		}, 500);
+
+	}, "1200");
+}

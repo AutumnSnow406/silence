@@ -1,0 +1,231 @@
+@CHARSET "UTF-8";
+
+html, *, body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, p, span {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, "宋体", verdana, Tahoma;
+	font-size: 14px;
+	line-height: 20px;
+	color: #000;
+	background: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: #000040;
+}
+
+a:hover {
+	color: #0080ff;
+}
+
+ul {
+	list-style: none;
+}
+
+.main {
+	width:1000px;
+	padding: 0 10px;
+	position: relative;
+	margin:0 auto;
+	background-color:#fff;
+	border-left: 1px solid #ADADAD;
+	border-right: 1px solid #ADADAD;
+	border-bottom: 1px solid #ADADAD;
+}
+
+.main .first {
+	height: 300px;
+	overflow: hidden;
+	padding-top:10px;
+	padding-bottom:6px;
+	z-index:1;
+}
+
+.main .second {
+	height: 202px;
+	overflow: hidden;
+	padding: 5px 0;
+}
+
+.main .third {
+	height: 220px;
+	overflow: hidden;
+	padding: 5px 0;
+}
+
+.main .last {
+	height: 190px;
+	overflow: hidden;
+	padding-top:5px;
+}
+
+.main .first .f_left, .main .second .s_left, .main .third .t_left,.main .last .l_left
+	{
+	margin-left: 5px;
+	margin-right: 8px;
+	width: 230px;
+	float: left;
+}
+
+.main .pict img {
+	margin-bottom: 8px;
+}
+
+.main .tbox {
+	width: 230px;
+	height: 178px;
+	float: left;
+	border: 1px solid #DADADA;
+	overflow: hidden;
+}
+
+.main .tbox1, .main .tbox3 {
+	width: 230px;
+	height: 218px;
+	float: left;
+	border: 1px solid #DADADA;
+	overflow: hidden;
+}
+
+.main .tbox2 {
+	width: 496px;
+	height: 218px;
+	float: left;
+	margin-left: -2px;
+	border: 1px solid #DADADA;
+	overflow: hidden;
+}
+
+.main .tbox .title,.main .tbox1 .title, .main .tbox2 .title, .main .tbox3 .title
+	{
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	padding-left: 10px;
+	border-bottom: 2px solid #E8E8E8;
+	/* background: url(../images/title.jpg) repeat-x; */
+	background-color: #4fb8f7;
+}
+
+.main .tbox .cont, .main .tbox1 .cont, .main .tbox2 .cont {
+	line-height: 22px;
+	float: left;
+	padding-top: 5px;
+	margin-left: 15px;
+}
+
+.main .tbox2 .cont {
+	width: 470px;
+	padding-left: 5px;
+}
+
+.main .tbox3 .cont {
+	line-height: 22px;
+	float: left;
+	padding: 3px 10px 6px 0;
+	margin-left: 10px;
+}
+
+.main .first .f_middle, .main .second .s_middle, .main .third .t_middle, .main .last .l_middle {
+	width: 500px;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: left;
+}
+
+.main .first .f_middle .flashpic {
+	width: 495px;
+	overflow: hidden;
+}
+
+.main .first .f_middle #divBox {
+	height: 300px;
+}
+
+.main .first .f_middle .flashpic .loading img {
+	width: 500px;
+	height: 300px;
+}
+
+.main .first .f_middle .flashpic .pic {
+	width: 500px;
+	height: 300px;
+}
+
+.main .first .f_right, .main .second .s_right, .third .t_right,
+	.last .l_right {
+	margin-right: 7px;
+	width: 230px;
+	float: left;
+}
+
+.main .more {
+	font-size: 14px;
+	font-weight: normal;
+	float: right;
+}
+
+.main .second .tbox1,.main .second .tbox2{
+	height:200px;
+}
+.main .second .s_middle ul, .main .last .l_middle ul {
+	list-style: disc;
+}
+
+.main .second .s_right #notice {
+	float: left;
+	height: 170px;
+	margin-top: 5px;
+}
+
+.main .second .s_right #notice .list {
+	float: left;
+	overflow: hidden;
+	width: 220px;
+	padding-left: 10px;
+}
+
+.main .second .s_right #notice .list li {
+	padding: 3px 0;
+}
+
+.main .third .t_middle .tbox2 #wrap {
+	overflow: hidden;
+	width: 750px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.main .third .t_middle .tbox2 #wrap td {
+	text-align: center;
+}
+
+.main .third .t_middle .tbox2  #pic1, .main #pic2 {
+	margin: 0 3px;
+}
+
+.main .third .t_middle .tbox2 #wrap img {
+	width: 120px;
+	height: 130px;
+	margin: 2px 1px 5px 1px;
+}
+
+.main .last .l_left .tbox1, .main .last .l_middle .tbox2 {
+	height: 178px;
+}
+
+.main .tbox2 .cont span {
+	float: right;
+	font-size: 12px;
+}
+
+.main .last .l_right .pict {
+	margin-left: 1px;
+	padding-bottom:8px;
+}

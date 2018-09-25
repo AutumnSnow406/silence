@@ -1,0 +1,143 @@
+@CHARSET "UTF-8";
+
+html, *, body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, p, span {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, "宋体", verdana, Tahoma;
+	font-size: 16px;
+	line-height: 20px;
+	color: #000;
+	background: #fff;
+}
+
+a {
+	text-decoration: none;
+	color: #0080ff;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #ff0000;
+}
+
+ul {
+	list-style: none;
+}
+
+pre {
+	white-space: pre-wrap; /*css-3*/
+	white-space: -moz-pre-wrap; /*Mozilla,since1999*/
+	white-space: -pre-wrap; /*Opera4-6*/
+	white-space: -o-pre-wrap; /*Opera7*/
+	word-wrap: break-word; /*InternetExplorer5.5+*/
+	　　
+}
+
+.main {
+	position: relative;
+	width: 1024px; 
+	background: #fff;
+	margin: auto;
+	z-index: 1;
+}
+
+.main .pos {
+	width: 1024px;
+	color: #0080ff;
+	padding: 4px;
+	border-bottom: 1px solid #dadada;
+}
+
+.main .con {
+	overflow: hidden;
+	margin-top: 10px;
+}
+
+.main .con .con1 {
+	font-size: 18px;
+	line-height: 30px;
+	width: 170px;
+	text-align: left;
+	float: left;
+	padding: 5px 0 5px 30px;;
+	margin-right: 10px;
+	border: 1px solid #DADADA;
+	border-radius: 5px;
+	font-family: Arial, "微软雅黑", verdana, Tahoma;
+}
+
+.main .con .con1 span {
+	color: #ff0000;
+}
+
+.main .con .con2 {
+	width: 768px;
+	float: left;
+	font-size: 18px;
+	overflow: hidden;
+	line-height: 28px;
+	/* position:relative; */
+	border: 1px solid #DADADA;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+.main .con .con2 .tb .tr1 {
+	width: 580px;
+	float: left;
+	text-align: center;
+}
+
+.main .con .con2 .tb .tr1 p {
+	font-size: 26px;
+	line-height: 50px;
+	padding-left: 230px;
+	font-family: Arial, "微软雅黑", verdana, Tahoma;
+}
+
+.main .con .con2 .tb .tr2 ul {
+	font-size: 22px;
+	line-height: 50px;
+}
+
+.main .con .con2 .tb .tr3 p {
+	font-size: 18px;
+	line-height: 28px;
+	padding: 0 30px;
+}
+
+.main .con .con2 p {
+	padding: 5px 0;
+}
+
+.main .con .con2 p img {
+	width: 805px;
+}
+
+.main .con .con2 .mess {
+	width: 749px;
+	line-height: 30px;
+	font-size: 24px;
+	text-align: left;
+	padding: 8px;
+	border-bottom: 0;
+	border: 2px solid #53a9ff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #53a9ff;
+	color: #fff;
+}
+
+.main .con .con2 .mess1 {
+	width: 745px;
+	line-height: 30px;
+	font-size: 24px;
+	padding: 10px;
+	border: 2px solid #53a9ff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
